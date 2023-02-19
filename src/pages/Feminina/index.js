@@ -20,7 +20,6 @@ export default function Feminina() {
         }
 
         getData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

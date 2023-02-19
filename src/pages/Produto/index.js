@@ -22,7 +22,7 @@ export default function Produto() {
 
     const id = useParams('id');
     const [loja, setLoja] = useState('');
-    const [lojaId, setLojaId] = useState();
+    // const [lojaId, setLojaId] = useState();
     const [produto, setProduto] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [tamanhos, setTamanhos] = useState([]);
@@ -32,30 +32,32 @@ export default function Produto() {
     useEffect(() => {
         async function getData() {
             setIsLoading(true);
-            const res = await axios.get(`produto/${id.id}`);
+            const res = await axios.get(`produtos/${id.id}`);
             setProduto(res.data);
-            setLojaId(res.data.loja_id);
+            // setLojaId(res.data.loja_id);
             setColors(res.data.cor_produto.split(' '));
             setTamanhos(res.data.tamanho_produto.split(' '));
             setIsLoading(false);
-            setImagem(res.data.imagens_produto);
+            setImagem(res.data.img_url_1);
         }
 
-        async function getLoja() {
-            setIsLoading(true);
-            const res = await axios.get(`loja/${lojaId}`);
-            setLoja(res.data);
-            setIsLoading(false);
-        }
+        // async function getLoja() {
+        //     setIsLoading(true);
+        //     const res = await axios.get(`loja/${lojaId}`);
+        //     setLoja(res.data);
+        //     setIsLoading(false);
+        // }
 
         getData();
-        getLoja();
-    }, [id, lojaId]);
+        // getLoja();
+    }, [id,
+        // lojaId
+    ]);
 
     function handleFavorite() {
         const item = {
-            id: produto.produto_id,
-            imagens: produto.imagens_produto,
+            id: produto.id,
+            imagens: produto.img_url_1,
             nome: produto.nome,
             descricao: produto.descricao,
             qtd: produto.qtd_estoque,
@@ -68,8 +70,8 @@ export default function Produto() {
 
     function handleCart() {
         const item = {
-            id: produto.produto_id,
-            imagens: produto.imagens_produto,
+            id: produto.id,
+            imagens: produto.img_url_1,
             nome: produto.nome,
             descricao: produto.descricao,
             Qtd: produto.qtd_estoque,
@@ -97,7 +99,7 @@ export default function Produto() {
             <Info>
                 <div className="descricao">
                     <h2>{produto.nome}</h2>
-                    <Link to={`/pagina-loja/${lojaId}`}>
+                    {/* <Link to={`/pagina-loja/${lojaId}`}>
                         <div className="d-flex align-items-center">
                             {loja.img_perfil_loja ? (
                                 <img src={loja.img_perfil_loja} />
@@ -106,7 +108,7 @@ export default function Produto() {
                             )}
                             <h5>{loja.nome_fantasia}</h5>
                         </div>
-                    </Link>
+                    </Link> */}
                     <h5>Descrição:</h5>
                     <div className="campo overflow-auto">
                         <p>{produto.descricao}</p>

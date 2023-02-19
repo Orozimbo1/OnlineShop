@@ -14,7 +14,7 @@ export default function CardPage(props) {
 
     function handleFavorite() {
         const item = {
-            id: produto.produto_id,
+            id: produto.id,
             imagens: produto.imagens_produto,
             nome: produto.nome,
             descricao: produto.descricao,
@@ -28,8 +28,8 @@ export default function CardPage(props) {
 
     function handleCart() {
         const item = {
-            id: produto.produto_id,
-            imagens: produto.imagens_produto,
+            id: produto.id,
+            imagens: produto.img_url_1,
             nome: produto.nome,
             descricao: produto.descricao,
             Qtd: produto.qtd_estoque,
@@ -45,8 +45,8 @@ export default function CardPage(props) {
             <div className="imagem">
                 <img
                     src={
-                        produto.imagens_produto.length !== 0 ? (
-                            produto.imagens_produto[0]?.url_imagem
+                        produto.img_url_1 ? (
+                            produto.img_url_1
                         ) : (
                             <GiClothes size={28} />
                         )
@@ -55,7 +55,7 @@ export default function CardPage(props) {
                 <AiOutlineHeart size={28} onClick={(e) => handleFavorite()} />
             </div>
             <div className="dadosProduto">
-                <Link to={`/produto/${produto.produto_id}`}>
+                <Link to={`/produto/${produto.id}`}>
                     <h4>{produto.nome}</h4>
                     <h5>{`R$: ${produto.valor},00`}</h5>
                 </Link>

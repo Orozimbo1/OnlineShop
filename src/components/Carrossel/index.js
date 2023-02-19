@@ -7,7 +7,7 @@ function Carrossel(props) {
 
     return (
         <Carousel fade>
-            {imagens.map((imagem, index) => {
+            {/* {imagens.map((imagem, index) => {
                 return (
                     <Carousel.Item key={index}>
                         <img
@@ -17,7 +17,13 @@ function Carrossel(props) {
                         />
                     </Carousel.Item>
                 );
-            })}
+            })} */}
+            <Carousel.Item>
+                <img
+                    className="d-block w-100"
+                    src={imagens}
+                />
+            </Carousel.Item>
         </Carousel>
     );
 }
